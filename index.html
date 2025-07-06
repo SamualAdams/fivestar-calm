@@ -291,127 +291,263 @@
             
             <div class="calculator">
                 <div class="calc-inputs">
+                    <!-- Simple Mode Inputs (Always Visible) -->
                     <div class="input-group">
                         <div class="input-with-info">
-                            <label>Number of units in your fleet:</label>
+                            <label>Number of units in your fleet</label>
                             <span class="info-icon">i
                                 <div class="tooltip">Total portable toilets in your fleet that would be equipped with Violet Mini monitoring sensors</div>
                             </span>
                         </div>
                         <input type="number" id="fleet-size" value="50" min="1">
                     </div>
+                    
                     <div class="input-group">
                         <div class="input-with-info">
-                            <label>Time per service (minutes):</label>
+                            <label>Time per service (minutes)</label>
                             <span class="info-icon">i
                                 <div class="tooltip">Average minutes your crew spends servicing each unit (pumping, cleaning, restocking). Industry average is 8-12 minutes per unit.</div>
                             </span>
                         </div>
                         <input type="number" id="time-per-service" value="10" min="1">
                     </div>
+                    
                     <div class="input-group">
                         <div class="input-with-info">
-                            <label>Labor rate per hour ($):</label>
+                            <label>Labor rate per hour ($)</label>
                             <span class="info-icon">i
                                 <div class="tooltip">Fully-loaded labor cost including wages, benefits, and truck operating costs. Typically $20-35/hour for portable sanitation crews.</div>
                             </span>
                         </div>
                         <input type="number" id="hourly-rate" value="25" min="10" step="0.50">
                     </div>
+                    
                     <div class="input-group">
                         <div class="input-with-info">
-                            <label>Cleanings per week per unit:</label>
+                            <label>Cleanings per week per unit</label>
                             <span class="info-icon">i
                                 <div class="tooltip">How many times each unit is serviced weekly. Standard service is 1-3 times per week depending on usage and contract terms.</div>
                             </span>
                         </div>
                         <input type="number" id="cleanings-week" value="2" min="1">
                     </div>
+                    
                     <div class="input-group">
                         <div class="input-with-info">
-                            <label>Premium rental upcharge ($/month):</label>
+                            <label>Premium rental upcharge ($/month)</label>
                             <span class="info-icon">i
                                 <div class="tooltip">Additional monthly fee you could charge customers for 'smart monitored' units with real-time status alerts. Many operators charge $15-50/month premium.</div>
                             </span>
                         </div>
                         <input type="number" id="premium-upcharge" value="20" min="0">
                     </div>
+                    
+                    <!-- Toggle Button -->
+                    <div class="input-group toggle-container">
+                        <button type="button" id="advanced-toggle" class="toggle-button">
+                            ⚙️ Advanced Options
+                        </button>
+                    </div>
+                    
+                    <!-- Advanced Mode Inputs (Initially Hidden) -->
+                    <div class="advanced-fields hidden" id="advanced-fields">
+                        <div class="input-group">
+                            <div class="input-with-info">
+                                <label>Violet Mini Unit Price ($)</label>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Cost per Violet Mini device. Pricing may vary based on fleet size and custom requirements discussed during consultation.</div>
+                                </span>
+                            </div>
+                            <input type="number" id="unit-price" value="500" min="100">
+                        </div>
+                        
+                        <div class="input-group">
+                            <div class="input-with-info">
+                                <label>Time spent disinfecting per service (minutes)</label>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Minutes your crew currently spends manually scrubbing and disinfecting each unit interior. Violet Mini's UV system eliminates this step.</div>
+                                </span>
+                            </div>
+                            <input type="number" id="disinfect-time" value="3" min="0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <div class="input-with-info">
+                                <label>Emergency calls per unit per month</label>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Average monthly emergency service calls per unit (overflows, customer complaints, supply outages). Industry average is 0.3-0.8 per unit monthly.</div>
+                                </span>
+                            </div>
+                            <input type="number" id="emergency-calls" value="0.5" min="0" step="0.1">
+                        </div>
+                        
+                        <div class="input-group">
+                            <div class="input-with-info">
+                                <label>Emergency call cost multiplier</label>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Emergency calls cost more than scheduled service due to urgent response, route disruption, and customer relations. Typically 1.5-3x normal service cost.</div>
+                                </span>
+                            </div>
+                            <input type="number" id="emergency-multiplier" value="2.0" min="1.0" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <!-- Default Value Notice -->
+                    <div class="default-notice" id="default-notice">
+                        <small><em>Using industry-standard assumptions for equipment pricing and service patterns. Use Advanced Options to customize for your specific operation.</em></small>
+                    </div>
                 </div>
                 
                 <div class="calc-results">
                     <h3>Your Investment Analysis</h3>
                     
-                    <!-- Current Costs -->
-                    <div class="result-item">
-                        <div class="result-with-info">
-                            <span class="result-label">Current annual labor cost</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">Total yearly cost for servicing your fleet at current frequency and time per unit. Calculated as: (Time per service ÷ 60) × Cleanings per week × Per hour rate × Number of units × 52 weeks</div>
-                            </span>
+                    <!-- Key Metrics Row (Horizontal) -->
+                    <div class="key-metrics">
+                        <div class="key-metric-card">
+                            <div class="result-with-info">
+                                <span class="result-label">Annual Benefit Per Unit</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Total annual benefit divided by number of units. This shows how much value each Violet Mini device generates yearly for your operation.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="benefit-per-unit">$421</span>
                         </div>
-                        <span class="result-value" id="current-annual-cost">$21,667</span>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-with-info">
-                            <span class="result-label">New annual labor cost with Violet Mini</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">Projected yearly labor cost with 30% time savings per unit due to smart monitoring eliminating guesswork and reducing unnecessary visits</div>
-                            </span>
+                        
+                        <div class="key-metric-card">
+                            <div class="result-with-info">
+                                <span class="result-label">Monthly Benefit Per Unit</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Annual benefit per unit divided by 12 months. This is the monthly value each device adds to your bottom line.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="monthly-benefit-per-unit">$35</span>
                         </div>
-                        <span class="result-value" id="new-annual-cost">$15,167</span>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-with-info">
-                            <span class="result-label">Annual labor savings</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">Money saved yearly by reducing service time per unit. Violet Mini's monitoring lets crews work more efficiently by knowing exactly which units need attention</div>
-                            </span>
+                        
+                        <div class="key-metric-card payback-card">
+                            <div class="result-with-info">
+                                <span class="result-label">Payback Period</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">How many months until Violet Mini pays for itself through combined savings and revenue. Calculated as: Total Investment ÷ (Total Annual Benefit ÷ 12)</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="payback">14.3 months</span>
                         </div>
-                        <span class="result-value" id="annual-savings">$6,500</span>
-                    </div>
-                    
-                    <!-- Revenue -->
-                    <div class="result-item group-divider">
-                        <div class="result-with-info">
-                            <span class="result-label">Annual premium revenue potential</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">Additional yearly income from charging customers a premium for monitored units with real-time alerts and proactive service</div>
-                            </span>
-                        </div>
-                        <span class="result-value" id="premium-revenue">$12,000</span>
                     </div>
                     
-                    <!-- Total Benefit - Highlighted -->
-                    <div class="result-item highlight">
-                        <div class="result-with-info">
-                            <span class="result-label">Total Annual Benefit</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">Combined yearly value from labor savings plus premium revenue. This is your total financial gain from implementing Violet Mini</div>
-                            </span>
+                    <!-- Investment Summary (2 columns) -->
+                    <div class="investment-summary">
+                        <div class="summary-item highlight">
+                            <div class="result-with-info">
+                                <span class="result-label">Total Annual Benefit</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Combined yearly value from all labor savings, emergency prevention, and premium revenue. This is your total financial gain from Violet Mini.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="total-benefit">$21,046</span>
                         </div>
-                        <span class="result-value" id="total-benefit">$18,500</span>
+                        
+                        <div class="summary-item">
+                            <div class="result-with-info">
+                                <span class="result-label">Total Investment Required</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">One-time cost to equip your fleet. Includes devices, installation, training, and 2-year warranty.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="total-investment">$25,000</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="result-with-info">
+                                <span class="result-label">Annual Labor Savings</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Combined savings from UV disinfection automation and smart monitoring efficiency improvements.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="total-labor-savings">$6,283</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="result-with-info">
+                                <span class="result-label">Annual Emergency Prevention</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Cost avoided by preventing 85% of emergency calls through proactive alerts for overflows, supply outages, and unit issues.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="emergency-savings">$2,763</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="result-with-info">
+                                <span class="result-label">Annual Premium Revenue</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Additional yearly income from charging customers a premium for monitored units with real-time alerts and proactive service.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="premium-revenue">$12,000</span>
+                        </div>
+                        
+                        <div class="summary-item roi-item">
+                            <div class="result-with-info">
+                                <span class="result-label">Annual ROI</span>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Return on Investment percentage calculated as: (Total Annual Benefit ÷ Total Investment) × 100. Shows annual return rate.</div>
+                                </span>
+                            </div>
+                            <span class="result-value" id="annual-roi">84%</span>
+                        </div>
                     </div>
                     
-                    <!-- Investment -->
-                    <div class="result-item group-divider">
-                        <div class="result-with-info">
-                            <span class="result-label">Total Violet Mini investment</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">One-time cost to equip your fleet. Calculated as: Number of units × $500. Includes device, installation, training, and 2-year warranty</div>
-                            </span>
+                    <!-- Detailed Breakdown (Collapsible) -->
+                    <div class="detailed-breakdown">
+                        <button type="button" id="breakdown-toggle" class="breakdown-toggle">
+                            Show detailed breakdown ▼
+                        </button>
+                        
+                        <div class="breakdown-content hidden" id="breakdown-content">
+                            <div class="breakdown-section">
+                                <h4>Current Annual Costs</h4>
+                                <div class="result-item">
+                                    <div class="result-with-info">
+                                        <span class="result-label">Current Annual Labor Cost</span>
+                                        <span class="info-icon">i
+                                            <div class="tooltip">Total yearly cost for servicing your fleet at current frequency and time per unit. Calculated as: (Time per service ÷ 60) × Cleanings per week × Per hour rate × Number of units × 52 weeks</div>
+                                        </span>
+                                    </div>
+                                    <span class="result-value" id="current-annual-cost">$21,667</span>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-with-info">
+                                        <span class="result-label">Current Annual Emergency Cost</span>
+                                        <span class="info-icon">i
+                                            <div class="tooltip">Yearly cost of unplanned service calls for overflows, complaints, and supply issues. Higher cost due to disrupted routes and urgent response.</div>
+                                        </span>
+                                    </div>
+                                    <span class="result-value" id="current-emergency-cost">$3,250</span>
+                                </div>
+                            </div>
+                            
+                            <div class="breakdown-section">
+                                <h4>Violet Mini Savings Breakdown</h4>
+                                <div class="result-item">
+                                    <div class="result-with-info">
+                                        <span class="result-label">Annual Labor Savings from UV Disinfection</span>
+                                        <span class="info-icon">i
+                                            <div class="tooltip">Money saved yearly by eliminating manual scrubbing time. Violet Mini's UV system handles disinfection automatically between services.</div>
+                                        </span>
+                                    </div>
+                                    <span class="result-value" id="disinfection-savings">$1,950</span>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-with-info">
+                                        <span class="result-label">Annual Labor Savings from Smart Monitoring</span>
+                                        <span class="info-icon">i
+                                            <div class="tooltip">Savings from route optimization and knowing unit status in advance. Reduces wasted time and improves crew efficiency by 20%.</div>
+                                        </span>
+                                    </div>
+                                    <span class="result-value" id="monitoring-savings">$4,333</span>
+                                </div>
+                            </div>
                         </div>
-                        <span class="result-value" id="total-investment">$25,000</span>
-                    </div>
-                    
-                    <!-- Payback Period - Highlighted -->
-                    <div class="result-item payback">
-                        <div class="result-with-info">
-                            <span class="result-label">Payback Period</span>
-                            <span class="info-icon">i
-                                <div class="tooltip">How many months until Violet Mini pays for itself through labor savings and premium revenue. Calculated as: Total Investment ÷ (Total Annual Benefit ÷ 12)</div>
-                            </span>
-                        </div>
-                        <span class="result-value" id="payback">16.2 months</span>
                     </div>
                 </div>
             </div>

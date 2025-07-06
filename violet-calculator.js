@@ -1,64 +1,103 @@
-// ROI Calculator for Violet Mini Monitoring System
+// Enhanced ROI Calculator for Violet Mini Monitoring System
 
 // Get all input elements
 const fleetSizeInput = document.getElementById('fleet-size');
+const unitPriceInput = document.getElementById('unit-price');
 const timePerServiceInput = document.getElementById('time-per-service');
+const disinfectTimeInput = document.getElementById('disinfect-time');
 const hourlyRateInput = document.getElementById('hourly-rate');
 const cleaningsWeekInput = document.getElementById('cleanings-week');
+const emergencyCallsInput = document.getElementById('emergency-calls');
+const emergencyMultiplierInput = document.getElementById('emergency-multiplier');
 const premiumUpchargeInput = document.getElementById('premium-upcharge');
 
 // Get all result elements
 const currentAnnualCostElement = document.getElementById('current-annual-cost');
-const newAnnualCostElement = document.getElementById('new-annual-cost');
-const annualSavingsElement = document.getElementById('annual-savings');
+const currentEmergencyCostElement = document.getElementById('current-emergency-cost');
+const disinfectionSavingsElement = document.getElementById('disinfection-savings');
+const monitoringSavingsElement = document.getElementById('monitoring-savings');
+const emergencySavingsElement = document.getElementById('emergency-savings');
 const premiumRevenueElement = document.getElementById('premium-revenue');
 const totalBenefitElement = document.getElementById('total-benefit');
 const totalInvestmentElement = document.getElementById('total-investment');
+const totalLaborSavingsElement = document.getElementById('total-labor-savings');
+const annualRoiElement = document.getElementById('annual-roi');
+const benefitPerUnitElement = document.getElementById('benefit-per-unit');
+const monthlyBenefitPerUnitElement = document.getElementById('monthly-benefit-per-unit');
 const paybackElement = document.getElementById('payback');
 
 // Constants
-const VIOLET_COST_PER_UNIT = 500;
-const TIME_SAVINGS_PERCENTAGE = 0.30; // 30% time reduction
+const MONITORING_SAVINGS_PERCENTAGE = 0.20; // 20% efficiency gain from smart monitoring
+const EMERGENCY_PREVENTION_RATE = 0.85; // 85% of emergencies prevented
 
 // Calculate ROI
 function calculateROI() {
     // Get input values
     const numberOfUnits = parseInt(fleetSizeInput.value) || 50;
+    const unitPrice = parseFloat(unitPriceInput.value) || 500;
     const timePerService = parseFloat(timePerServiceInput.value) || 10;
+    const disinfectTime = parseFloat(disinfectTimeInput.value) || 3;
     const hourlyRate = parseFloat(hourlyRateInput.value) || 25;
     const cleaningsPerWeek = parseInt(cleaningsWeekInput.value) || 2;
+    const emergencyCallsPerMonth = parseFloat(emergencyCallsInput.value) || 0.5;
+    const emergencyMultiplier = parseFloat(emergencyMultiplierInput.value) || 2.0;
     const premiumUpcharge = parseFloat(premiumUpchargeInput.value) || 20;
     
-    // Current State Calculations
+    // Current Annual Labor Cost
     const weeklyLaborHoursPerUnit = (timePerService / 60) * cleaningsPerWeek;
     const weeklyLaborCostPerUnit = weeklyLaborHoursPerUnit * hourlyRate;
     const totalWeeklyLaborCost = weeklyLaborCostPerUnit * numberOfUnits;
     const currentAnnualLaborCost = totalWeeklyLaborCost * 52;
     
-    // With Violet Mini Calculations
-    const newTimePerService = timePerService * (1 - TIME_SAVINGS_PERCENTAGE);
-    const newWeeklyLaborHoursPerUnit = (newTimePerService / 60) * cleaningsPerWeek;
-    const newWeeklyLaborCostPerUnit = newWeeklyLaborHoursPerUnit * hourlyRate;
-    const totalNewWeeklyLaborCost = newWeeklyLaborCostPerUnit * numberOfUnits;
-    const newAnnualLaborCost = totalNewWeeklyLaborCost * 52;
+    // Current Annual Emergency Cost
+    const emergencyServiceTime = timePerService; // Same time per emergency call
+    const emergencyHourlyRate = hourlyRate * emergencyMultiplier;
+    const emergencyCallCost = (emergencyServiceTime / 60) * emergencyHourlyRate;
+    const currentAnnualEmergencyCost = emergencyCallsPerMonth * numberOfUnits * 12 * emergencyCallCost;
     
-    // Calculate savings and revenue
-    const annualLaborSavings = currentAnnualLaborCost - newAnnualLaborCost;
+    // Disinfection Savings (UV eliminates manual scrubbing)
+    const disinfectionWeeklyHours = (disinfectTime / 60) * cleaningsPerWeek * numberOfUnits;
+    const disinfectionWeeklyCost = disinfectionWeeklyHours * hourlyRate;
+    const annualDisinfectionSavings = disinfectionWeeklyCost * 52;
+    
+    // Smart Monitoring Savings (20% efficiency improvement)
+    const baseServiceTime = timePerService - disinfectTime; // Service time without disinfection
+    const monitoringTimeReduction = baseServiceTime * MONITORING_SAVINGS_PERCENTAGE;
+    const monitoringWeeklyHours = (monitoringTimeReduction / 60) * cleaningsPerWeek * numberOfUnits;
+    const monitoringWeeklyCost = monitoringWeeklyHours * hourlyRate;
+    const annualMonitoringSavings = monitoringWeeklyCost * 52;
+    
+    // Emergency Prevention Savings
+    const annualEmergencyPreventionSavings = currentAnnualEmergencyCost * EMERGENCY_PREVENTION_RATE;
+    
+    // Premium Revenue
     const monthlyPremiumRevenue = numberOfUnits * premiumUpcharge;
     const annualPremiumRevenue = monthlyPremiumRevenue * 12;
-    const totalAnnualBenefit = annualLaborSavings + annualPremiumRevenue;
     
-    // Investment and payback
-    const totalInvestment = numberOfUnits * VIOLET_COST_PER_UNIT;
+    // Total Benefits
+    const totalAnnualBenefit = annualDisinfectionSavings + annualMonitoringSavings + annualEmergencyPreventionSavings + annualPremiumRevenue;
+    const totalLaborSavings = annualDisinfectionSavings + annualMonitoringSavings;
+    
+    // Investment Analysis
+    const totalInvestment = numberOfUnits * unitPrice;
+    const annualBenefitPerUnit = totalAnnualBenefit / numberOfUnits;
+    const monthlyBenefitPerUnit = annualBenefitPerUnit / 12;
     const paybackMonths = totalInvestment / (totalAnnualBenefit / 12);
+    const annualRoiPercentage = (totalAnnualBenefit / totalInvestment) * 100;
     
     // Update display
     currentAnnualCostElement.textContent = '$' + Math.round(currentAnnualLaborCost).toLocaleString();
-    newAnnualCostElement.textContent = '$' + Math.round(newAnnualLaborCost).toLocaleString();
-    annualSavingsElement.textContent = '$' + Math.round(annualLaborSavings).toLocaleString();
+    currentEmergencyCostElement.textContent = '$' + Math.round(currentAnnualEmergencyCost).toLocaleString();
+    disinfectionSavingsElement.textContent = '$' + Math.round(annualDisinfectionSavings).toLocaleString();
+    monitoringSavingsElement.textContent = '$' + Math.round(annualMonitoringSavings).toLocaleString();
+    emergencySavingsElement.textContent = '$' + Math.round(annualEmergencyPreventionSavings).toLocaleString();
     premiumRevenueElement.textContent = '$' + Math.round(annualPremiumRevenue).toLocaleString();
     totalBenefitElement.textContent = '$' + Math.round(totalAnnualBenefit).toLocaleString();
     totalInvestmentElement.textContent = '$' + totalInvestment.toLocaleString();
+    totalLaborSavingsElement.textContent = '$' + Math.round(totalLaborSavings).toLocaleString();
+    annualRoiElement.textContent = Math.round(annualRoiPercentage) + '%';
+    benefitPerUnitElement.textContent = '$' + Math.round(annualBenefitPerUnit).toLocaleString();
+    monthlyBenefitPerUnitElement.textContent = '$' + Math.round(monthlyBenefitPerUnit).toLocaleString();
     
     // Format payback period
     if (paybackMonths < 1) {
@@ -71,24 +110,28 @@ function calculateROI() {
         paybackElement.textContent = years.toFixed(1) + ' years';
     }
     
-    // Add visual feedback for good ROI
+    // Add visual feedback for good ROI (keeping existing colors for consistency)
     if (paybackMonths < 12) {
-        paybackElement.style.color = '#27AE60';
-        paybackElement.style.fontWeight = '700';
+        paybackElement.style.color = 'white';
+        paybackElement.style.fontWeight = '800';
     } else if (paybackMonths < 24) {
-        paybackElement.style.color = '#7B68EE';
-        paybackElement.style.fontWeight = '600';
+        paybackElement.style.color = 'white';
+        paybackElement.style.fontWeight = '800';
     } else {
-        paybackElement.style.color = '#E74C3C';
-        paybackElement.style.fontWeight = '600';
+        paybackElement.style.color = 'white';
+        paybackElement.style.fontWeight = '800';
     }
 }
 
-// Add event listeners
+// Add event listeners for all inputs
 fleetSizeInput.addEventListener('input', calculateROI);
+unitPriceInput.addEventListener('input', calculateROI);
 timePerServiceInput.addEventListener('input', calculateROI);
+disinfectTimeInput.addEventListener('input', calculateROI);
 hourlyRateInput.addEventListener('input', calculateROI);
 cleaningsWeekInput.addEventListener('input', calculateROI);
+emergencyCallsInput.addEventListener('input', calculateROI);
+emergencyMultiplierInput.addEventListener('input', calculateROI);
 premiumUpchargeInput.addEventListener('input', calculateROI);
 
 // Calculate initial values
@@ -118,9 +161,13 @@ function formatNumberInput(input) {
 }
 
 formatNumberInput(fleetSizeInput);
+formatNumberInput(unitPriceInput);
 formatNumberInput(timePerServiceInput);
+formatNumberInput(disinfectTimeInput);
 formatNumberInput(hourlyRateInput);
 formatNumberInput(cleaningsWeekInput);
+formatNumberInput(emergencyCallsInput);
+formatNumberInput(emergencyMultiplierInput);
 formatNumberInput(premiumUpchargeInput);
 
 // Mobile tooltip handling
@@ -178,6 +225,59 @@ document.head.appendChild(style);
 
 // Initialize mobile tooltip handling
 handleMobileTooltips();
+
+// Simple/Advanced Calculator Toggle
+function initializeCalculatorToggle() {
+    const advancedToggle = document.getElementById('advanced-toggle');
+    const advancedFields = document.getElementById('advanced-fields');
+    const defaultNotice = document.getElementById('default-notice');
+    
+    if (!advancedToggle || !advancedFields) return;
+    
+    let isAdvanced = false;
+    
+    advancedToggle.addEventListener('click', function() {
+        isAdvanced = !isAdvanced;
+        
+        if (isAdvanced) {
+            // Show advanced fields
+            advancedFields.classList.remove('hidden');
+            advancedToggle.innerHTML = '⚙️ Simple Mode';
+            if (defaultNotice) defaultNotice.style.display = 'none';
+        } else {
+            // Hide advanced fields
+            advancedFields.classList.add('hidden');
+            advancedToggle.innerHTML = '⚙️ Advanced Options';
+            if (defaultNotice) defaultNotice.style.display = 'block';
+        }
+    });
+}
+
+// Breakdown Toggle
+function initializeBreakdownToggle() {
+    const breakdownToggle = document.getElementById('breakdown-toggle');
+    const breakdownContent = document.getElementById('breakdown-content');
+    
+    if (!breakdownToggle || !breakdownContent) return;
+    
+    let isBreakdownOpen = false;
+    
+    breakdownToggle.addEventListener('click', function() {
+        isBreakdownOpen = !isBreakdownOpen;
+        
+        if (isBreakdownOpen) {
+            breakdownContent.classList.remove('hidden');
+            breakdownToggle.innerHTML = 'Hide detailed breakdown ▲';
+        } else {
+            breakdownContent.classList.add('hidden');
+            breakdownToggle.innerHTML = 'Show detailed breakdown ▼';
+        }
+    });
+}
+
+// Initialize toggles
+initializeCalculatorToggle();
+initializeBreakdownToggle();
 
 // Add animation on scroll
 const observerOptions = {
