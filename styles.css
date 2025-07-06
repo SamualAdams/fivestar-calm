@@ -653,6 +653,7 @@ h3 {
 
 .day-in-life {
     margin-top: 80px;
+    margin-bottom: 40px;
     background: #f8f9fa;
     padding: 40px;
     border-radius: 20px;
@@ -710,8 +711,10 @@ h3 {
     color: white;
     padding: 40px;
     border-radius: 20px;
-    max-width: 700px;
-    margin: 60px auto 0;
+    max-width: 800px;
+    margin: 40px auto 0;
+    width: fit-content;
+    min-width: 600px;
 }
 
 .savings-amount {
