@@ -1975,3 +1975,179 @@ h3 {
         padding: 20px;
     }
 }
+
+/* Financing Section */
+.financing-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.financing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.financing-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.financing-card:hover {
+    transform: translateY(-5px);
+    border-color: #7B68EE;
+}
+
+.financing-card.featured {
+    border-color: #27AE60;
+    background: linear-gradient(135deg, #f8f9fa 0%, rgba(39, 174, 96, 0.05) 100%);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #27AE60;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.financing-card h3 {
+    margin-bottom: 20px;
+    color: #2C3E50;
+    text-align: center;
+}
+
+.financing-details {
+    margin-bottom: 20px;
+}
+
+.finance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.finance-item:last-child {
+    border-bottom: none;
+}
+
+.finance-label {
+    font-weight: 500;
+    color: #5D6D7E;
+}
+
+.finance-value {
+    font-weight: 600;
+    color: #2C3E50;
+}
+
+.financing-cta {
+    text-align: center;
+    background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+.financing-cta h3 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.financing-cta p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.financing-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.button.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.button.secondary:hover {
+    background: white;
+    color: #7B68EE;
+}
+
+/* Target Market Section */
+.target-market-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.target-market-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.target-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-left: 5px solid #7B68EE;
+    transition: all 0.3s ease;
+}
+
+.target-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.target-card h3 {
+    color: #7B68EE;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.target-card p {
+    color: #5D6D7E;
+    line-height: 1.6;
+}
+
+/* Mobile Responsiveness for New Sections */
+@media (max-width: 768px) {
+    .financing-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .target-market-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .financing-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .financing-cta {
+        padding: 30px 20px;
+    }
+}
