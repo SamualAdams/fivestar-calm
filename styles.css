@@ -435,7 +435,7 @@ h3 {
 
 .process-steps {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 60px;
 }
@@ -482,11 +482,18 @@ h3 {
     padding: 50px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    gap: 60px;
+}
+
+.calc-inputs {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
 }
 
 .input-group {
@@ -498,6 +505,7 @@ h3 {
     margin-bottom: 10px;
     color: #5D6D7E;
     font-weight: 500;
+    flex-grow: 1;
 }
 
 .input-group input {
@@ -523,28 +531,74 @@ h3 {
 .result-item {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 1.25em;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item.group-divider {
+    border-top: 2px solid #e0e0e0;
+    margin-top: 1.5em;
+    padding-top: 1.5em;
 }
 
 .result-item.highlight {
-    background: #7B68EE;
+    background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
     color: white;
-    padding: 20px;
-    margin: 20px -30px;
+    padding: 25px 30px;
+    margin: 1.5em -30px;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(123, 104, 238, 0.3);
 }
 
 .result-item.payback {
+    background: linear-gradient(135deg, #27AE60 0%, #2ECC71 100%);
+    color: white;
+    padding: 20px 25px;
+    margin: 1em -30px 0;
     border: none;
-    margin-top: 20px;
-    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(39, 174, 96, 0.3);
+}
+
+.result-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #5D6D7E;
+    margin-bottom: 5px;
+}
+
+.result-item.highlight .result-label,
+.result-item.payback .result-label {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .result-value {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    color: #2C3E50;
+    text-align: right;
+}
+
+.result-item.highlight .result-value {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.result-item.payback .result-value {
+    font-size: 1.6rem;
+    color: white;
+    font-weight: 800;
 }
 
 /* Business Comparison */
@@ -976,6 +1030,175 @@ h3 {
     color: white;
 }
 
+/* Tooltip Styling */
+.info-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: #999;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 14px;
+    cursor: help;
+    margin-left: 5px;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.info-icon:hover {
+    background: #7B68EE;
+    border-color: #7B68EE;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2C3E50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    max-width: 250px;
+    width: max-content;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #2C3E50;
+}
+
+.info-icon:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.input-with-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.result-with-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Mobile tooltip adjustments */
+@media (max-width: 768px) {
+    .tooltip {
+        position: fixed;
+        bottom: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 280px;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .tooltip::after {
+        display: none;
+    }
+    
+    .tooltip-close {
+        position: absolute;
+        top: 4px;
+        right: 8px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Contact Info Styling */
+.contact-info {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.contact-method {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+}
+
+.contact-method h4 {
+    color: #7B68EE;
+    margin-bottom: 10px;
+}
+
+.contact-method .phone-link,
+.contact-method .email-link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: block;
+    margin: 10px 0;
+}
+
+.next-steps {
+    margin-top: 30px;
+}
+
+.next-steps h4 {
+    color: #7B68EE;
+    margin-bottom: 15px;
+}
+
+.next-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.next-steps li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.next-steps li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27AE60;
+    font-weight: 700;
+}
+
 /* Footer */
 .footer {
     padding: 40px 0;
@@ -1087,6 +1310,16 @@ h3 {
         padding: 30px;
     }
     
+    .calc-inputs {
+        padding: 25px;
+    }
+    
+    .result-item.highlight,
+    .result-item.payback {
+        margin-left: -25px;
+        margin-right: -25px;
+    }
+    
     .comparison-grid,
     .timeline-comparison,
     .insights-grid,
@@ -1094,6 +1327,11 @@ h3 {
     .order-container {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+    
+    .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .daily-stats {

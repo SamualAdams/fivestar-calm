@@ -1,52 +1,64 @@
-// ROI Calculator for Violet UV Cleaning Robot
+// ROI Calculator for Violet Mini Monitoring System
 
 // Get all input elements
 const fleetSizeInput = document.getElementById('fleet-size');
-const costPerCleanInput = document.getElementById('cost-per-clean');
+const timePerServiceInput = document.getElementById('time-per-service');
+const hourlyRateInput = document.getElementById('hourly-rate');
 const cleaningsWeekInput = document.getElementById('cleanings-week');
 const premiumUpchargeInput = document.getElementById('premium-upcharge');
 
 // Get all result elements
-const totalInvestmentElement = document.getElementById('total-investment');
-const monthlySavingsElement = document.getElementById('monthly-savings');
+const currentAnnualCostElement = document.getElementById('current-annual-cost');
+const newAnnualCostElement = document.getElementById('new-annual-cost');
+const annualSavingsElement = document.getElementById('annual-savings');
 const premiumRevenueElement = document.getElementById('premium-revenue');
 const totalBenefitElement = document.getElementById('total-benefit');
+const totalInvestmentElement = document.getElementById('total-investment');
 const paybackElement = document.getElementById('payback');
 
 // Constants
 const VIOLET_COST_PER_UNIT = 500;
-const WEEKS_PER_MONTH = 4.33;
+const TIME_SAVINGS_PERCENTAGE = 0.30; // 30% time reduction
 
 // Calculate ROI
 function calculateROI() {
     // Get input values
-    const numberOfUnits = parseInt(fleetSizeInput.value) || 10;
-    const costPerClean = parseFloat(costPerCleanInput.value) || 10;
-    const cleaningsPerWeek = parseInt(cleaningsWeekInput.value) || 3;
+    const numberOfUnits = parseInt(fleetSizeInput.value) || 50;
+    const timePerService = parseFloat(timePerServiceInput.value) || 10;
+    const hourlyRate = parseFloat(hourlyRateInput.value) || 25;
+    const cleaningsPerWeek = parseInt(cleaningsWeekInput.value) || 2;
     const premiumUpcharge = parseFloat(premiumUpchargeInput.value) || 20;
     
-    // Calculate total investment
+    // Current State Calculations
+    const weeklyLaborHoursPerUnit = (timePerService / 60) * cleaningsPerWeek;
+    const weeklyLaborCostPerUnit = weeklyLaborHoursPerUnit * hourlyRate;
+    const totalWeeklyLaborCost = weeklyLaborCostPerUnit * numberOfUnits;
+    const currentAnnualLaborCost = totalWeeklyLaborCost * 52;
+    
+    // With Violet Mini Calculations
+    const newTimePerService = timePerService * (1 - TIME_SAVINGS_PERCENTAGE);
+    const newWeeklyLaborHoursPerUnit = (newTimePerService / 60) * cleaningsPerWeek;
+    const newWeeklyLaborCostPerUnit = newWeeklyLaborHoursPerUnit * hourlyRate;
+    const totalNewWeeklyLaborCost = newWeeklyLaborCostPerUnit * numberOfUnits;
+    const newAnnualLaborCost = totalNewWeeklyLaborCost * 52;
+    
+    // Calculate savings and revenue
+    const annualLaborSavings = currentAnnualLaborCost - newAnnualLaborCost;
+    const monthlyPremiumRevenue = numberOfUnits * premiumUpcharge;
+    const annualPremiumRevenue = monthlyPremiumRevenue * 12;
+    const totalAnnualBenefit = annualLaborSavings + annualPremiumRevenue;
+    
+    // Investment and payback
     const totalInvestment = numberOfUnits * VIOLET_COST_PER_UNIT;
-    
-    // Calculate monthly savings from eliminated cleaning costs
-    const weeklySavingsPerUnit = costPerClean * cleaningsPerWeek;
-    const monthlySavingsPerUnit = weeklySavingsPerUnit * WEEKS_PER_MONTH;
-    const totalMonthlySavings = monthlySavingsPerUnit * numberOfUnits;
-    
-    // Calculate premium revenue potential
-    const totalPremiumRevenue = premiumUpcharge * numberOfUnits;
-    
-    // Calculate total monthly benefit
-    const totalMonthlyBenefit = totalMonthlySavings + totalPremiumRevenue;
-    
-    // Calculate payback period in months
-    const paybackMonths = totalInvestment / totalMonthlyBenefit;
+    const paybackMonths = totalInvestment / (totalAnnualBenefit / 12);
     
     // Update display
+    currentAnnualCostElement.textContent = '$' + Math.round(currentAnnualLaborCost).toLocaleString();
+    newAnnualCostElement.textContent = '$' + Math.round(newAnnualLaborCost).toLocaleString();
+    annualSavingsElement.textContent = '$' + Math.round(annualLaborSavings).toLocaleString();
+    premiumRevenueElement.textContent = '$' + Math.round(annualPremiumRevenue).toLocaleString();
+    totalBenefitElement.textContent = '$' + Math.round(totalAnnualBenefit).toLocaleString();
     totalInvestmentElement.textContent = '$' + totalInvestment.toLocaleString();
-    monthlySavingsElement.textContent = '$' + Math.round(totalMonthlySavings).toLocaleString();
-    premiumRevenueElement.textContent = '$' + Math.round(totalPremiumRevenue).toLocaleString();
-    totalBenefitElement.textContent = '$' + Math.round(totalMonthlyBenefit).toLocaleString();
     
     // Format payback period
     if (paybackMonths < 1) {
@@ -60,10 +72,10 @@ function calculateROI() {
     }
     
     // Add visual feedback for good ROI
-    if (paybackMonths < 6) {
+    if (paybackMonths < 12) {
         paybackElement.style.color = '#27AE60';
         paybackElement.style.fontWeight = '700';
-    } else if (paybackMonths < 12) {
+    } else if (paybackMonths < 24) {
         paybackElement.style.color = '#7B68EE';
         paybackElement.style.fontWeight = '600';
     } else {
@@ -74,7 +86,8 @@ function calculateROI() {
 
 // Add event listeners
 fleetSizeInput.addEventListener('input', calculateROI);
-costPerCleanInput.addEventListener('input', calculateROI);
+timePerServiceInput.addEventListener('input', calculateROI);
+hourlyRateInput.addEventListener('input', calculateROI);
 cleaningsWeekInput.addEventListener('input', calculateROI);
 premiumUpchargeInput.addEventListener('input', calculateROI);
 
@@ -105,9 +118,66 @@ function formatNumberInput(input) {
 }
 
 formatNumberInput(fleetSizeInput);
-formatNumberInput(costPerCleanInput);
+formatNumberInput(timePerServiceInput);
+formatNumberInput(hourlyRateInput);
 formatNumberInput(cleaningsWeekInput);
 formatNumberInput(premiumUpchargeInput);
+
+// Mobile tooltip handling
+function handleMobileTooltips() {
+    const infoIcons = document.querySelectorAll('.info-icon');
+    
+    infoIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Close any open tooltips
+            document.querySelectorAll('.tooltip.mobile-active').forEach(tooltip => {
+                tooltip.classList.remove('mobile-active');
+            });
+            
+            const tooltip = this.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.classList.add('mobile-active');
+                
+                // Add close button on mobile
+                if (window.innerWidth <= 768) {
+                    if (!tooltip.querySelector('.tooltip-close')) {
+                        const closeBtn = document.createElement('button');
+                        closeBtn.className = 'tooltip-close';
+                        closeBtn.innerHTML = '×';
+                        closeBtn.onclick = function(e) {
+                            e.stopPropagation();
+                            tooltip.classList.remove('mobile-active');
+                        };
+                        tooltip.appendChild(closeBtn);
+                    }
+                }
+            }
+        });
+    });
+    
+    // Close tooltips when clicking elsewhere
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.tooltip.mobile-active').forEach(tooltip => {
+            tooltip.classList.remove('mobile-active');
+        });
+    });
+}
+
+// Add mobile-specific CSS class for active tooltips
+const style = document.createElement('style');
+style.textContent = `
+    .tooltip.mobile-active {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize mobile tooltip handling
+handleMobileTooltips();
 
 // Add animation on scroll
 const observerOptions = {
