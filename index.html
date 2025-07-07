@@ -33,38 +33,41 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Reduce Operating Costs While Improving Service Quality</h1>
-                <h2 class="secondary-headline"><span class="violet-text">Violet Mini</span> tech upgrade adds UV disinfection and smart monitoring to your existing fleet—improving operational efficiency at a fraction of premium unit costs</h2>
-                
-                <p class="hero-description">Why replace your entire fleet when you can upgrade it? Violet Mini transforms standard portable toilets into operationally optimized units that reduce service costs while maintaining competitive pricing.</p>
-                
-                <div class="key-benefits">
-                    <div class="benefit-point">
-                        <span class="check-icon">✓</span>
-                        <span>UV disinfection eliminates most pathogens automatically</span>
-                    </div>
-                    <div class="benefit-point">
-                        <span class="check-icon">✓</span>
-                        <span>Smart monitoring reduces unnecessary service trips by 20-30%</span>
-                    </div>
-                    <div class="benefit-point">
-                        <span class="check-icon">✓</span>
-                        <span>Optimize routes and prevent emergencies with real-time alerts</span>
-                    </div>
-                </div>
+                <h2 class="secondary-headline"><span class="violet-text">Violet Mini</span> tech upgrade adds UV disinfection and smart monitoring to your existing fleet</h2>
                 
                 <div class="hero-buttons">
                     <a href="#features" class="button primary">See How It Works</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="tech-showcase">
-                    <svg width="250" height="250" viewBox="0 0 250 250" class="tech-svg">
-                        <circle cx="125" cy="125" r="100" fill="#7B68EE" opacity="0.1"/>
-                        <rect x="100" y="75" width="50" height="100" fill="#2C3E50" rx="8"/>
-                        <circle cx="125" cy="95" r="12" fill="#7B68EE"/>
-                        <rect x="115" y="185" width="20" height="30" fill="#7B68EE" rx="3"/>
-                        <text x="125" y="135" text-anchor="middle" fill="white" font-size="14" font-weight="bold">UV</text>
-                    </svg>
+                <div class="placeholder-image">
+                    <!-- Placeholder for product image -->
+                    <div class="image-placeholder">
+                        <span>Product Image</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="what-we-do">
+        <div class="container">
+            <h2>What Violet Mini Does</h2>
+            <p class="section-subtitle">Why replace your entire fleet when you can upgrade it? Violet Mini transforms standard portable toilets into operationally optimized units that reduce service costs while maintaining competitive pricing.</p>
+            
+            <div class="key-benefits">
+                <div class="benefit-point">
+                    <span class="check-icon">✓</span>
+                    <span>UV disinfection eliminates most pathogens automatically</span>
+                </div>
+                <div class="benefit-point">
+                    <span class="check-icon">✓</span>
+                    <span>Smart monitoring reduces unnecessary service trips by 20-30%</span>
+                </div>
+                <div class="benefit-point">
+                    <span class="check-icon">✓</span>
+                    <span>Optimize routes and prevent emergencies with real-time alerts</span>
                 </div>
             </div>
         </div>
@@ -297,28 +300,6 @@
                 </table>
             </div>
 
-            <!-- Operational Efficiency Comparison -->
-            <div class="revenue-comparison">
-                <h3>Operational Cost Analysis</h3>
-                <div class="revenue-cards">
-                    <div class="revenue-card basic">
-                        <h4>Current Fleet Operations</h4>
-                        <div class="price">$800 <span>per unit cost</span></div>
-                        <div class="rental">$150/month standard rate</div>
-                        <div class="annual">Standard operating costs</div>
-                        <div class="roi">Manual route planning</div>
-                    </div>
-                    <div class="revenue-card violet">
-                        <div class="best-badge">OPTIMIZED</div>
-                        <h4>Violet Upgraded Fleet</h4>
-                        <div class="price">$1,300 <span>per unit cost</span></div>
-                        <div class="rental">$150-165/month competitive rate</div>
-                        <div class="annual">20-30% reduced operating costs</div>
-                        <div class="roi">Data-driven efficiency</div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Break-Even Analysis -->
             <div class="breakeven-analysis">
                 <div class="breakeven-box">
@@ -379,18 +360,6 @@
                 </div>
             </div>
 
-            <!-- Value Proposition Summary -->
-            <div class="value-prop-summary">
-                <blockquote>
-                    "Violet Mini provides proven operational efficiency improvements that reduce costs while maintaining competitive market pricing—delivering typical 18-24 month paybacks that make sense for growing portable sanitation operations."
-                </blockquote>
-                
-                <!-- Customer Testimonial -->
-                <div class="testimonial">
-                    <p><em>"We upgraded 25 units with Violet and saw immediate route optimization benefits. Our fuel costs dropped 20% and emergency calls decreased significantly. Paid for itself in 22 months exactly as projected."</em></p>
-                    <cite>- Mike R., Delta Portable Sanitation</cite>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -474,6 +443,16 @@
                         
                         <div class="input-group">
                             <div class="input-with-info">
+                                <label>Financing term (months)</label>
+                                <span class="info-icon">i
+                                    <div class="tooltip">Financing term for equipment purchase. Set to 0 for lump sum payment in Month 1, or 12-60 months for monthly payments.</div>
+                                </span>
+                            </div>
+                            <input type="number" id="financing-term" value="24" min="0" max="60">
+                        </div>
+                        
+                        <div class="input-group">
+                            <div class="input-with-info">
                                 <label>Time spent disinfecting per service (minutes)</label>
                                 <span class="info-icon">i
                                     <div class="tooltip">Minutes your crew currently spends manually scrubbing and disinfecting each unit interior. Violet Mini's UV system eliminates this step.</div>
@@ -515,33 +494,33 @@
                     <!-- Key Metrics Row (Horizontal) -->
                     <div class="key-metrics">
                         <div class="key-metric-card">
-                            <div class="result-with-info">
+                            <div class="stat-label-row">
                                 <span class="result-label">Annual Benefit Per Unit</span>
-                                <span class="info-icon">i
+                                <span class="info-icon" aria-label="Total annual benefit divided by number of units">i
                                     <div class="tooltip">Total annual benefit divided by number of units. This shows how much value each Violet Mini device generates yearly for your operation.</div>
                                 </span>
                             </div>
-                            <span class="result-value" id="benefit-per-unit">$421</span>
+                            <div class="stat-value-row" id="benefit-per-unit">$421</div>
                         </div>
                         
                         <div class="key-metric-card">
-                            <div class="result-with-info">
+                            <div class="stat-label-row">
                                 <span class="result-label">Monthly Benefit Per Unit</span>
-                                <span class="info-icon">i
+                                <span class="info-icon" aria-label="Monthly value per device">i
                                     <div class="tooltip">Annual benefit per unit divided by 12 months. This is the monthly value each device adds to your bottom line.</div>
                                 </span>
                             </div>
-                            <span class="result-value" id="monthly-benefit-per-unit">$35</span>
+                            <div class="stat-value-row" id="monthly-benefit-per-unit">$35</div>
                         </div>
                         
                         <div class="key-metric-card payback-card">
-                            <div class="result-with-info">
+                            <div class="stat-label-row">
                                 <span class="result-label">Payback Period</span>
-                                <span class="info-icon">i
+                                <span class="info-icon" aria-label="Time until investment pays for itself">i
                                     <div class="tooltip">How many months until Violet Mini pays for itself through combined savings and revenue. Calculated as: Total Investment ÷ (Total Annual Benefit ÷ 12)</div>
                                 </span>
                             </div>
-                            <span class="result-value" id="payback">14.3 months</span>
+                            <div class="stat-value-row" id="payback">14.3 months</div>
                         </div>
                     </div>
                     
@@ -665,114 +644,41 @@
         </div>
     </section>
 
-    <!-- Financing Options -->
-    <section class="financing-section">
+    <!-- Cash Flow Chart Section -->
+    <section class="cash-flow-section">
         <div class="container">
-            <h2>Flexible Financing Options</h2>
-            <p class="section-subtitle">Equipment financing available to make fleet upgrades manageable for growing operations</p>
+            <h2>Monthly Value vs. Financing Cost</h2>
+            <p class="section-subtitle">Even without premium revenue, your cost savings alone nearly cover—or beat—your monthly payment</p>
             
-            <div class="financing-grid">
-                <div class="financing-card">
-                    <h3>Equipment Financing</h3>
-                    <div class="financing-details">
-                        <div class="finance-item">
-                            <span class="finance-label">Terms Available:</span>
-                            <span class="finance-value">3-7 years</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Monthly Payment:</span>
-                            <span class="finance-value">As low as $50-75/unit</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Down Payment:</span>
-                            <span class="finance-value">10-20% typically</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Approval:</span>
-                            <span class="finance-value">Same-day pre-qualification</span>
-                        </div>
+            <div class="chart-container">
+                <div class="chart-explanation">
+                    <p class="chart-intro">This chart shows how <strong>monthly savings and revenue stack up</strong> against your financing costs. The green bars represent guaranteed cost savings from operational efficiency. Purple shows potential premium revenue from upgraded service.</p>
+                </div>
+                
+                <div class="chart-wrapper">
+                    <canvas id="cash-flow-chart" width="800" height="400"></canvas>
+                </div>
+                
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color savings-bar"></div>
+                        <span>Monthly Cost Savings (guaranteed)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color revenue-bar"></div>
+                        <span>Monthly Premium Revenue (potential)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color financing-line"></div>
+                        <span>Monthly Financing Cost</span>
                     </div>
                 </div>
                 
-                <div class="financing-card featured">
-                    <div class="featured-badge">MOST POPULAR</div>
-                    <h3>Fleet Upgrade Program</h3>
-                    <div class="financing-details">
-                        <div class="finance-item">
-                            <span class="finance-label">Minimum Fleet Size:</span>
-                            <span class="finance-value">20+ units</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Special Terms:</span>
-                            <span class="finance-value">Extended 7-year financing</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Installation:</span>
-                            <span class="finance-value">Included in financing</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Warranty:</span>
-                            <span class="finance-value">2-year included</span>
-                        </div>
+                <div class="chart-insights">
+                    <div class="insight-card">
+                        <div class="insight-label">Key Insight</div>
+                        <div class="insight-text">Cost savings alone provide significant financing coverage, making premium revenue pure profit margin improvement.</div>
                     </div>
-                </div>
-                
-                <div class="financing-card">
-                    <h3>Pilot Program</h3>
-                    <div class="financing-details">
-                        <div class="finance-item">
-                            <span class="finance-label">Trial Period:</span>
-                            <span class="finance-value">30 days</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Units:</span>
-                            <span class="finance-value">5-10 unit minimum</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Performance Guarantee:</span>
-                            <span class="finance-value">Measurable savings or refund</span>
-                        </div>
-                        <div class="finance-item">
-                            <span class="finance-label">Risk:</span>
-                            <span class="finance-value">30-day money-back guarantee</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="financing-cta">
-                <h3>Ready to discuss financing options?</h3>
-                <p>Our equipment financing partners work with established portable sanitation operators to make fleet upgrades manageable. Get pre-qualified in minutes.</p>
-                <div class="financing-buttons">
-                    <a href="#order" class="button primary">Get Pre-Qualified</a>
-                    <a href="#order" class="button secondary">Request Pilot Program</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Market Section -->
-    <section class="target-market-section">
-        <div class="container">
-            <h2>Best Fit for Growing Operations</h2>
-            <p class="section-subtitle">Violet Mini delivers the most value for established operators looking to optimize operations</p>
-            
-            <div class="target-market-grid">
-                <div class="target-card">
-                    <h3>Fleet Size: 20+ Units</h3>
-                    <p>Operational improvements scale with fleet size. Larger operations see more significant cost savings and efficiency gains that justify the investment.</p>
-                </div>
-                <div class="target-card">
-                    <h3>Construction-Focused</h3>
-                    <p>Job sites with predictable service schedules benefit most from route optimization and monitoring capabilities.</p>
-                </div>
-                <div class="target-card">
-                    <h3>Efficiency-Minded Operations</h3>
-                    <p>Operators looking to differentiate through operational excellence rather than just competing on price alone.</p>
-                </div>
-                <div class="target-card">
-                    <h3>Established Business</h3>
-                    <p>Companies with consistent cash flow that can absorb 18-24 month payback periods for long-term efficiency gains.</p>
                 </div>
             </div>
         </div>
@@ -790,7 +696,7 @@
                     <h3>Labor Cost Challenge</h3>
                     <p>of portable sanitation operating costs are labor-related</p>
                     <div class="insight-solution">
-                        <strong>Violet Mini Solution:</strong> Reduce labor time per unit while maintaining quality
+                        <strong>Violet Mini Solution:</strong> Empower your existing team by automating repetitive tasks, allowing crew members to focus on delivering exceptional customer service and handling higher-value work.
                     </div>
                 </div>
                 <div class="insight-card">
@@ -798,7 +704,7 @@
                     <h3>Customer Complaints</h3>
                     <p>of portable toilet complaints relate to cleanliness and odor</p>
                     <div class="insight-solution">
-                        <strong>Violet Mini Solution:</strong> Proactive monitoring prevents complaints by ensuring units are serviced before problems occur
+                        <strong>Violet Mini Solution:</strong> Proactive monitoring and UV sanitation help your team consistently maintain high standards—reducing complaints and improving customer relationships.
                     </div>
                 </div>
                 <div class="insight-card">
@@ -806,90 +712,191 @@
                     <h3>Daily Labor Shortage</h3>
                     <p>average hourly rate increase due to labor shortages in sanitation</p>
                     <div class="insight-solution">
-                        <strong>Violet Mini Solution:</strong> Same crew services more units per day
+                        <strong>Violet Mini Solution:</strong> Equip your current workforce with technology that enhances their productivity and satisfaction, enabling your business to grow without overburdening your team.
                     </div>
                 </div>
             </div>
             
             <div class="industry-quote">
                 <blockquote>
-                    "The portable sanitation industry needs innovation that helps operators do more with their existing workforce while improving service quality."
+                    "Innovations like Violet Mini allow portable sanitation teams to deliver better service more efficiently, enhancing the satisfaction of both customers and crews alike."
                 </blockquote>
-                <cite>- Portable Sanitation Association International</cite>
             </div>
         </div>
     </section>
 
-    <!-- Order Section -->
-    <section id="order" class="order-section">
+    <!-- Next Steps Section -->
+    <section id="order" class="next-steps-section">
         <div class="container">
-            <h2>Upgrade Your Fleet Today</h2>
-            <p class="section-subtitle">Transform your portable toilets into premium smart units</p>
+            <h2>Next Steps to Upgrade Your Fleet</h2>
+            <p class="section-subtitle">Simple process to get your fleet upgraded and operational</p>
             
-            <div class="order-container">
-                <div class="order-info">
-                    <h3>Investment Details</h3>
-                    <div class="price-breakdown">
-                        <div class="price-item">
-                            <span class="price-label">Violet Mini Tech Upgrade:</span>
-                            <span class="price-value">$500 per unit</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price-label">Basic Unit + Violet Package:</span>
-                            <span class="price-value">$1,300 per unit</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price-label">Professional Installation:</span>
-                            <span class="price-value">Included</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price-label">Training & Setup:</span>
-                            <span class="price-value">Included</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price-label">2-Year Warranty:</span>
-                            <span class="price-value">Included</span>
-                        </div>
-                    </div>
-                    
-                    <div class="guarantees">
-                        <h4>Our Guarantee</h4>
-                        <ul>
-                            <li>60-day money-back guarantee</li>
-                            <li>Free shipping for 10+ unit orders</li>
-                            <li>Technical support and cellular service included</li>
-                            <li>Bulk upgrade pricing available</li>
-                        </ul>
+            <div class="timeline-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Consultation</div>
+                    <div class="step-description">
+                        We'll meet to discuss your routes, ops, and goals.
                     </div>
                 </div>
-                
-                <div class="contact-info">
-                    <h3>Get Started Today</h3>
-                    <p>Ready to upgrade your fleet to premium smart units? Contact us directly:</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <h4>Call Us</h4>
-                            <a href="tel:225-555-3483" class="phone-link">(225) 555-FIVE</a>
-                            <p>Speak with our team about your specific needs</p>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <h4>Email Us</h4>
-                            <a href="mailto:sales@fivestarcleaning.com" class="email-link">sales@fivestarcleaning.com</a>
-                            <p>Send us details about your fleet size and operation</p>
-                        </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Proposal</div>
+                    <div class="step-description">
+                        Receive a tailored proposal with pricing and timeline.
                     </div>
-                    
-                    <div class="next-steps">
-                        <h4>What happens next?</h4>
-                        <ul>
-                            <li>Free consultation about your operation</li>
-                            <li>Custom quote based on your fleet size</li>
-                            <li>Installation scheduling within 2 weeks</li>
-                            <li>Training and ongoing support included</li>
-                        </ul>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Installation</div>
+                    <div class="step-description">
+                        Schedule installation and training at your convenience.
                     </div>
+                </div>
+            </div>
+            
+            <div class="contact-block">
+                <p>📞 <span class="contact-label">Call:</span> <a href="tel:225-238-7056">(225) 238-7056</a></p>
+                <p>📧 <span class="contact-label">Email:</span> <a href="mailto:jon@fivestar.com">jon@fivestar.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Answers to common questions about Violet Mini and the fleet upgrade process</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-1"
+                    >
+                        How long does installation take per unit?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-1"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Violet Mini is designed for fast retrofit. Most units can be upgraded in 15 minutes or less with basic tools—no special training required.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-2"
+                    >
+                        Will Violet Mini work with my existing fleet?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-2"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Yes, Violet Mini is compatible with all standard portable toilet models. It can be installed on both new and existing units.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-3"
+                    >
+                        What maintenance does the system require?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-3"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Violet Mini is low-maintenance. The UV lamp and sensors are designed for long life and only require periodic inspection during regular service visits.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-4"
+                    >
+                        How does the smart monitoring system work?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-4"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Integrated sensors track fill levels, usage, and unit status in real time. Alerts and data are sent to your dashboard or mobile device for proactive service planning.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-5"
+                    >
+                        Is financing available for upgrades?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-5"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Yes, equipment financing is available to help spread out the investment and match savings to monthly payments. See our Financing Options section for details.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-6"
+                    >
+                        What is the typical payback period?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-6"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Most operators see a full payback in 18-24 months, depending on fleet size, service frequency, and premium pricing adoption.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-7"
+                    >
+                        Can I pilot Violet Mini before a full rollout?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div
+                        id="faq-answer-7"
+                        class="faq-answer hidden"
+                        aria-hidden="true"
+                    >
+                        Absolutely. We offer pilot programs for 5-10 units so you can validate operational savings and benefits before committing to a full fleet upgrade.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button
+                        class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-8"
+                    >
+                        How do I get started?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <p>Contact us for a free consultation and custom quote. We’ll discuss your needs, provide a tailored proposal, and help you plan your upgrade timeline.</p>
                 </div>
             </div>
         </div>

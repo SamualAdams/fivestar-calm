@@ -146,7 +146,7 @@ h3 {
 .button.primary:hover {
     background: #6A5ACD;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
+    box-shadow: 0 5px 15px rgba(123,104,238,0.3);
 }
 
 .button.secondary {
@@ -242,6 +242,53 @@ h3 {
     line-height: 1.6;
     max-width: 600px;
     font-weight: 300;
+}
+
+/* Placeholder Image */
+.placeholder-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-placeholder {
+    width: 300px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    border: 2px dashed rgba(255,255,255,0.3);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* What We Do Section */
+.what-we-do {
+    padding: 80px 0;
+    background: white;
+}
+
+.what-we-do h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2C3E50;
+}
+
+.what-we-do .section-subtitle {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.2rem;
+    color: #5D6D7E;
+    line-height: 1.6;
+}
+
+.what-we-do .key-benefits {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .hero-subtitle {
@@ -434,7 +481,7 @@ h3 {
     filter: drop-shadow(0 2px 4px rgba(123,104,238,0.2));
 }
 
-/* How It Works */
+/* How It Works - FIXED */
 .how-it-works {
     padding: 80px 0;
     background: white;
@@ -445,6 +492,7 @@ h3 {
     color: #5D6D7E;
     font-size: 1.1rem;
     margin-bottom: 3rem;
+    line-height: 1.6;
 }
 
 .process-steps {
@@ -452,11 +500,13 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 60px;
+    align-items: start;
 }
 
 .step {
     text-align: center;
     position: relative;
+    padding: 20px;
 }
 
 .step-number {
@@ -465,12 +515,12 @@ h3 {
     background: #7B68EE;
     color: white;
     border-radius: 50%;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
     position: relative;
     z-index: 2;
 }
@@ -483,6 +533,14 @@ h3 {
 
 .step h3 {
     margin-bottom: 15px;
+    color: #2C3E50;
+    font-size: 1.3rem;
+}
+
+.step p {
+    color: #5D6D7E;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
 /* ROI Calculator */
@@ -1007,12 +1065,12 @@ h3 {
     text-align: center;
     background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
     color: white;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 800px;
-    margin: 40px auto 0;
-    width: fit-content;
-    min-width: 600px;
+    padding: 2rem 1rem;
+    margin: 40px 0 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0;
 }
 
 .savings-amount {
@@ -1061,7 +1119,7 @@ h3 {
     font-weight: 500;
 }
 
-/* Industry Insights */
+/* Industry Insights - FIXED */
 .industry-insights {
     padding: 80px 0;
     background: #f8f9fa;
@@ -1075,16 +1133,22 @@ h3 {
 }
 
 .insight-card {
-    background: white;
+    background: #27AE60;
+    color: white;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     text-align: center;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
 }
 
 .insight-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .insight-stat {
@@ -1094,16 +1158,34 @@ h3 {
     margin-bottom: 20px;
 }
 
+.insight-card h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.insight-card p {
+    color: white;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
 .insight-solution {
     margin-top: 20px;
     padding: 20px;
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    line-height: 1.5;
 }
 
 .insight-solution strong {
-    color: #7B68EE;
+    color: #FFE082;
+    font-weight: 600;
 }
 
 .industry-quote {
@@ -1279,16 +1361,16 @@ h3 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: transparent;
-    color: #888;
-    border: 1px solid #888;
+    color: #6b7280;
+    border: 1px solid #6b7280;
     border-radius: 50%;
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
-    cursor: pointer;
+    cursor: help;
     position: relative;
     transition: color 0.2s, border-color 0.2s;
     flex-shrink: 0;
@@ -1345,6 +1427,84 @@ h3 {
     display: flex;
     align-items: center;
     gap: 0.4em;
+}
+
+/* Standardized Stat Block Layout */
+.stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: left;
+}
+
+.stat-label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.stat-value-row {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.2;
+}
+
+/* Update existing stat components to use new layout */
+.key-metric-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.key-metric-card .result-with-info {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.key-metric-card .result-label {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+    text-align: center;
+}
+
+.key-metric-card .result-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.summary-item .result-with-info {
+    margin-bottom: 0.5rem;
+}
+
+.summary-item .result-label {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+    text-align: left;
+}
+
+.summary-item .result-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: left;
 }
 
 /* Mobile tooltip adjustments */
@@ -1551,6 +1711,16 @@ h3 {
         gap: 30px;
     }
     
+    .step {
+        padding: 30px 20px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
     .calculator {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -1596,9 +1766,19 @@ h3 {
     .timeline-comparison,
     .insights-grid,
     .specs-grid,
-    .order-container {
+    .order-container,
+    .options-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+    
+    .comparison-table {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .option-card.recommended {
+        margin-top: 0;
     }
     
     .contact-methods {
@@ -1652,48 +1832,64 @@ h3 {
     }
 }
 
-/* Comparison Table Styles (moved from inline) */
+/* Comparison Table Styles - FIXED */
 .comparison-table {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
+    margin: 30px 0;
 }
 
 .comparison-col {
     flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .comparison-col h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
+    color: #2C3E50;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #7B68EE;
 }
 
 .comparison-table table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
 .comparison-table th,
 .comparison-table td {
     text-align: left;
-    padding: 0.6rem 0.8rem;
+    padding: 0.8rem 1rem;
     border-bottom: 1px solid #f0f0f0;
 }
 
 .comparison-table th {
     font-weight: 600;
     font-size: 0.9rem;
+    background: #f8f9fa;
+    color: #2C3E50;
 }
 
 .comparison-table td {
     font-size: 0.9rem;
+    color: #5D6D7E;
 }
 
 .comparison-table tfoot td {
     font-weight: bold;
-    border-top: 2px solid #000;
+    border-top: 2px solid #2C3E50;
+    background: #7B68EE;
+    color: white;
+    padding: 1rem;
 }
 
 /* Premium Comparison Section */
@@ -1825,12 +2021,18 @@ h3 {
     text-align: center;
 }
 
-.breakeven-box {
+.breakeven-analysis {
+    margin: 60px auto;
+    max-width: 1200px;
     background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
+    border-radius: 0;
+}
+
+.breakeven-box {
     color: white;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 800px;
+    padding: 2rem 1rem;
+    text-align: center;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -1873,6 +2075,7 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 30px;
+    align-items: start;
 }
 
 .option-card {
@@ -1883,30 +2086,38 @@ h3 {
     position: relative;
     border: 2px solid #e0e0e0;
     transition: all 0.3s ease;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .option-card:hover {
     border-color: #7B68EE;
     transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 .option-card.recommended {
     border-color: #27AE60;
     background: linear-gradient(135deg, #f8f9fa 0%, rgba(39, 174, 96, 0.05) 100%);
+    margin-top: 20px;
 }
 
 .recommended-badge {
     position: absolute;
-    top: -10px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
     background: #27AE60;
     color: white;
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-size: 0.8rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    white-space: nowrap;
+    z-index: 10;
 }
 
 .option-details p {
@@ -1936,9 +2147,15 @@ h3 {
 .testimonial {
     background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
     color: white;
-    padding: 30px 40px;
-    border-radius: 15px;
-    max-width: 600px;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 0;
+}
+
+.testimonial .container {
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -1987,6 +2204,7 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin: 40px 0;
+    width: 100%;
 }
 
 .financing-card {
@@ -1997,6 +2215,10 @@ h3 {
     position: relative;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .financing-card:hover {
@@ -2004,64 +2226,15 @@ h3 {
     border-color: #7B68EE;
 }
 
-.financing-card.featured {
-    border-color: #27AE60;
-    background: linear-gradient(135deg, #f8f9fa 0%, rgba(39, 174, 96, 0.05) 100%);
-}
-
-.featured-badge {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #27AE60;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.financing-card h3 {
-    margin-bottom: 20px;
-    color: #2C3E50;
-    text-align: center;
-}
-
-.financing-details {
-    margin-bottom: 20px;
-}
-
-.finance-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.finance-item:last-child {
-    border-bottom: none;
-}
-
-.finance-label {
-    font-weight: 500;
-    color: #5D6D7E;
-}
-
-.finance-value {
-    font-weight: 600;
-    color: #2C3E50;
-}
-
 .financing-cta {
     text-align: center;
     background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
     color: white;
-    padding: 40px;
-    border-radius: 20px;
-    margin-top: 40px;
+    padding: 2rem 1rem;
+    margin: 40px auto 0;
+    max-width: 1200px;
+    border-radius: 0;
+    box-sizing: border-box;
 }
 
 .financing-cta h3 {
@@ -2078,76 +2251,399 @@ h3 {
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.button.secondary {
-    background: transparent;
-    border: 2px solid white;
-    color: white;
+@media (max-width: 1024px) {
+    .financing-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.button.secondary:hover {
-    background: white;
-    color: #7B68EE;
-}
-
-/* Target Market Section */
-.target-market-section {
-    padding: 80px 0;
-    background: #f8f9fa;
-}
-
-.target-market-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.target-card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-left: 5px solid #7B68EE;
-    transition: all 0.3s ease;
-}
-
-.target-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.target-card h3 {
-    color: #7B68EE;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-.target-card p {
-    color: #5D6D7E;
-    line-height: 1.6;
-}
-
-/* Mobile Responsiveness for New Sections */
 @media (max-width: 768px) {
     .financing-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
-    .target-market-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .financing-cta {
+        padding: 2rem 1rem;
     }
     
+    .savings-highlight {
+        padding: 2rem 1rem;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .breakeven-box {
+        padding: 2rem 1rem;
+    }
+    
+    .breakeven-analysis {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .testimonial {
+        padding: 2rem 1rem;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .financing-cta {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
     .financing-buttons {
         flex-direction: column;
         align-items: center;
         gap: 15px;
     }
+}
+
+/* FAQ Accordion Styles */
+.faq-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e9ecef;
+    padding: 1rem 0;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #2c3e50;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+    color: #7B68EE;
+}
+
+.faq-question:focus {
+    outline: 2px solid #7B68EE;
+    outline-offset: 2px;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #6c757d;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease, color 0.2s ease;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+    color: #7B68EE;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.faq-answer.show {
+    max-height: 200px;
+    opacity: 1;
+    padding: 0.5rem 0.5rem 1rem;
+}
+
+.faq-answer.hidden {
+    display: block;
+}
+
+/* Next Steps Timeline Styles */
+.next-steps-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.timeline-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.step-number {
+    color: #7B68EE;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.step-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.contact-block {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-block p {
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.contact-label {
+    font-weight: 600;
+}
+
+.contact-block a {
+    color: #7B68EE;
+    text-decoration: none;
+    cursor: text;
+}
+
+.contact-block a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .timeline-steps {
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: space-between;
+    }
     
-    .financing-cta {
-        padding: 30px 20px;
+    .step {
+        width: calc(33.333% - 1.33rem);
+    }
+    
+    .faq-question {
+        font-size: 1.25rem;
+    }
+    
+    .contact-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+    
+    .contact-block p {
+        margin-bottom: 0;
+    }
+}
+
+/* Cash Flow Chart Styles */
+.cash-flow-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.chart-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cash-flow-chart {
+    max-width: 100%;
+    height: auto;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #2c3e50;
+}
+
+.legend-color {
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.legend-color.financing-line {
+    background: #e74c3c;
+}
+
+.legend-color.savings-bar {
+    background: #27ae60;
+}
+
+.legend-color.revenue-bar {
+    background: #7B68EE;
+}
+
+.breakeven-indicator {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.breakeven-marker {
+    display: inline-block;
+    position: relative;
+}
+
+.marker-line {
+    width: 2px;
+    height: 30px;
+    background: #f39c12;
+    margin: 0 auto 0.5rem;
+    border-radius: 1px;
+}
+
+.marker-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f39c12;
+}
+
+/* Chart Explanation and Insights */
+.chart-explanation {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #7B68EE;
+}
+
+.chart-intro {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    line-height: 1.5;
+}
+
+.chart-intro strong {
+    color: #7B68EE;
+    font-weight: 600;
+}
+
+.chart-insights {
+    margin-top: 1.5rem;
+}
+
+.insight-card {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.insight-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.insight-text {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Responsive Chart Layout */
+@media (max-width: 768px) {
+    .chart-container {
+        padding: 1rem;
+    }
+    
+    .chart-legend {
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+    
+    .legend-item {
+        font-size: 0.8rem;
+    }
+    
+    .chart-explanation {
+        padding: 0.75rem;
+    }
+    
+    .chart-intro {
+        font-size: 0.9rem;
+    }
+    
+    .insight-card {
+        padding: 0.75rem 1rem;
+    }
+    
+    .insight-text {
+        font-size: 0.9rem;
     }
 }
