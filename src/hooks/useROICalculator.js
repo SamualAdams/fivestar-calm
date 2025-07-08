@@ -100,7 +100,7 @@ const useROICalculator = () => {
   const updateInput = (key, value) => {
     setInputs(prev => ({
       ...prev,
-      [key]: parseFloat(value) || 0
+      [key]: value === '' ? '' : parseFloat(value) || 0
     }))
   }
 

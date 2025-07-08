@@ -9,25 +9,25 @@ const WhatVioletDoes = () => {
   const benefits = [
     {
       icon: Zap,
-      title: "UV Disinfection Technology",
-      description: "Eliminates most bacteria, viruses, and pathogens automatically after each use. No chemicals needed—reduce manual cleaning time and improve service efficiency."
+      title: "UV Disinfection",
+      description: "Disinfects without chemicals, giving your team more time for priority tasks."
     },
     {
       icon: Monitor,
-      title: "Smart Monitoring System", 
-      description: "Real-time fill level and usage tracking with automated alerts that prevent overflows and optimize service routes—reducing fuel costs and emergency calls."
+      title: "Data Sensors",
+      description: "Streams fleet metrics on usage to prevent overflows and plan maintenance."
     },
     {
       icon: TrendingUp,
-      title: "Operational Efficiency",
-      description: "Route optimization and predictive maintenance reduce operating costs while maintaining competitive pricing in your market."
+      title: "Dashboarding",
+      description: "Provides insights into fleet performance, helping you make data-driven decisions."
     },
     {
       icon: Wrench,
-      title: "Easy Fleet Integration",
-      description: "Upgrade existing fleet with 15-minute installation and universal compatibility—lower investment than full fleet replacement with faster payback."
+      title: "Fleet Integration",
+      description: "15-minute install on any unit—upgrade in place for faster ROI without a full fleet swap."
     }
-  ]
+  ];
 
   return (
     <Section background="gray" className="py-16 md:py-24">
@@ -35,10 +35,10 @@ const WhatVioletDoes = () => {
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-primary">
-            What Violet Mini Does
+            Tech Upgrade
           </h2>
           <p className="text-lg text-gray-secondary max-w-4xl mx-auto leading-relaxed">
-            Why replace your entire fleet when you can upgrade it? Violet Mini transforms standard portable toilets into operationally optimized units that reduce service costs while maintaining competitive pricing.
+            Why replace your entire fleet when you can upgrade it? the five* Violet Mini system up-levels standard portable restrooms into smart units that improve service and reduce costs.
           </p>
         </div>
         

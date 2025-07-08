@@ -10,18 +10,21 @@ const HowItWorks = () => {
     {
       number: "1",
       title: "Install",
-      description: "15-minute retrofit installation with universal compatibility for any portable toilet model."
+      description:
+        "We deliver and install the system in your existing fleet. Upgrade in place for faster ROI without unit downtime.",
     },
     {
-      number: "2", 
+      number: "2",
       title: "Monitor",
-      description: "Smart sensors track usage patterns, fill levels, and maintenance needs in real-time."
+      description:
+        "Sensors stream data displayed on dashboards for usage patterns, fill levels, and maintenance needs in real-time.",
     },
     {
       number: "3",
       title: "Optimize",
-      description: "Automated UV disinfection and data-driven route optimization reduce costs and improve service."
-    }
+      description:
+        "Automated UV disinfection and data-driven route optimization reduce costs, improve service, and focus your team.",
+    },
   ]
 
   return (
@@ -29,7 +32,7 @@ const HowItWorks = () => {
       <Container>
         <SectionHeader
           title="How It Works"
-          description="Simple three-step process to transform your existing fleet into an operationally optimized system."
+          description="Simple three-step process to transform your existing fleet."
           spacing="lg"
         />
 

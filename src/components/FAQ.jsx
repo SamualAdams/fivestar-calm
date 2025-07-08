@@ -8,15 +8,15 @@ const FAQ = () => {
   const faqs = [
     {
       question: "How long does installation take per unit?",
-      answer: "Violet Mini is designed for fast retrofit. Most units can be upgraded in 15 minutes or less with basic tools—no special training required."
+      answer: "Violet Mini is designed for fast retrofit. Most units can be upgraded in 15 minutes."
     },
     {
       question: "Will Violet Mini work with my existing fleet?",
-      answer: "Yes, Violet Mini is compatible with all standard portable toilet models. It can be installed on both new and existing units."
+      answer: "We work with you to ensure compatibility. It can be installed on both new and existing units."
     },
     {
       question: "What maintenance does the system require?",
-      answer: "Violet Mini is low-maintenance. The UV lamp and sensors are designed for long life and only require periodic inspection during regular service visits."
+      answer: "Violet Mini is low-maintenance. The UV lamp and sensors are designed for long life and only require periodic inspection and battery swaps during regular service visits."
     },
     {
       question: "How does the smart monitoring system work?",
@@ -24,7 +24,7 @@ const FAQ = () => {
     },
     {
       question: "Is financing available for upgrades?",
-      answer: "Yes, equipment financing is available to help spread out the investment and match savings to monthly payments. See our Financing Options section for details."
+      answer: "Yes, equipment financing is available to help spread out the investment and match savings to monthly payments."
     },
     {
       question: "What is the typical payback period?",

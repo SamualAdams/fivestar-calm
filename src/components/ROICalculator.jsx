@@ -1,47 +1,13 @@
 import React, { useState } from 'react'
-import { Info, Settings, BarChart3, ChevronDown, ChevronUp } from 'lucide-react'
+import { Settings, BarChart3, ChevronDown, ChevronUp } from 'lucide-react'
 import useROICalculator from '../hooks/useROICalculator'
 import ChartRenderer from './ui/ChartRenderer'
+import InputField from './ui/InputField'
 
 const ROICalculator = () => {
   const { inputs, results, isAdvanced, setIsAdvanced, updateInput, formatPayback } = useROICalculator()
   const [showChart, setShowChart] = useState(false)
 
-  const InputField = ({ 
-    label, 
-    value, 
-    onChange, 
-    min = 0, 
-    max, 
-    tooltip, 
-    type = "number",
-    id
-  }) => (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
-        <label htmlFor={id} className="text-sm font-medium text-gray-700">
-          {label}
-        </label>
-        {tooltip && (
-          <div className="group relative">
-            <Info className="w-4 h-4 text-gray-400 cursor-help" />
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none w-64 z-10">
-              {tooltip}
-            </div>
-          </div>
-        )}
-      </div>
-      <input
-        id={id}
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        min={min}
-        max={max}
-        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-primary focus:border-transparent"
-      />
-    </div>
-  )
 
   return (
     <section id="roi" className="section-padding bg-gray-50">
@@ -63,49 +29,59 @@ const ROICalculator = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Simple Mode Inputs */}
                   <InputField
+                    key="fleet-size"
                     label="Number of units in your fleet"
                     value={inputs.fleetSize}
-                    onChange={(value) => updateInput('fleetSize', value)}
+                    onChange={(e) => updateInput('fleetSize', e.target.value)}
                     min={1}
                     tooltip="Total portable toilets in your fleet that would be equipped with Violet Mini monitoring sensors"
                     id="fleet-size"
+                    type="number"
                   />
                   
                   <InputField
+                    key="time-per-service"
                     label="Time per service (minutes)"
                     value={inputs.timePerService}
-                    onChange={(value) => updateInput('timePerService', value)}
+                    onChange={(e) => updateInput('timePerService', e.target.value)}
                     min={1}
                     tooltip="Average time your crew spends servicing each unit, including pumping, cleaning, and restocking"
                     id="time-per-service"
+                    type="number"
                   />
                   
                   <InputField
+                    key="hourly-rate"
                     label="Labor rate per hour ($)"
                     value={inputs.hourlyRate}
-                    onChange={(value) => updateInput('hourlyRate', value)}
+                    onChange={(e) => updateInput('hourlyRate', e.target.value)}
                     min={1}
                     tooltip="Fully loaded hourly cost including wages, benefits, equipment, and vehicle costs"
                     id="hourly-rate"
+                    type="number"
                   />
                   
                   <InputField
+                    key="cleanings-week"
                     label="Cleanings per week"
                     value={inputs.cleaningsWeek}
-                    onChange={(value) => updateInput('cleaningsWeek', value)}
+                    onChange={(e) => updateInput('cleaningsWeek', e.target.value)}
                     min={1}
                     max={7}
                     tooltip="How many times per week each unit gets serviced on average"
                     id="cleanings-week"
+                    type="number"
                   />
                   
                   <InputField
+                    key="premium-upcharge"
                     label="Optional service premium ($)"
                     value={inputs.premiumUpcharge}
-                    onChange={(value) => updateInput('premiumUpcharge', value)}
+                    onChange={(e) => updateInput('premiumUpcharge', e.target.value)}
                     min={0}
                     tooltip="Monthly premium you could charge for upgraded service (UV disinfection + smart monitoring)"
                     id="premium-upcharge"
+                    type="number"
                   />
 
                   {/* Advanced Toggle */}
@@ -124,49 +100,59 @@ const ROICalculator = () => {
                 {isAdvanced && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
                     <InputField
+                      key="unit-price"
                       label="Violet Mini unit price ($)"
                       value={inputs.unitPrice}
-                      onChange={(value) => updateInput('unitPrice', value)}
+                      onChange={(e) => updateInput('unitPrice', e.target.value)}
                       min={100}
                       tooltip="Cost per Violet Mini device. Pricing may vary based on fleet size and custom requirements"
                       id="unit-price"
+                      type="number"
                     />
                     
                     <InputField
+                      key="financing-term"
                       label="Financing term (months)"
                       value={inputs.financingTerm}
-                      onChange={(value) => updateInput('financingTerm', value)}
+                      onChange={(e) => updateInput('financingTerm', e.target.value)}
                       min={0}
                       max={60}
                       tooltip="Financing term for equipment purchase. Set to 0 for lump sum payment in Month 1"
                       id="financing-term"
+                      type="number"
                     />
                     
                     <InputField
+                      key="disinfect-time"
                       label="Time disinfecting (minutes)"
                       value={inputs.disinfectTime}
-                      onChange={(value) => updateInput('disinfectTime', value)}
+                      onChange={(e) => updateInput('disinfectTime', e.target.value)}
                       min={0}
                       tooltip="Minutes currently spent manually scrubbing and disinfecting each unit interior"
                       id="disinfect-time"
+                      type="number"
                     />
                     
                     <InputField
+                      key="emergency-calls"
                       label="Emergency calls per unit/month"
                       value={inputs.emergencyCalls}
-                      onChange={(value) => updateInput('emergencyCalls', value)}
+                      onChange={(e) => updateInput('emergencyCalls', e.target.value)}
                       min={0}
                       tooltip="Average emergency service calls per unit per month (overflows, complaints, etc.)"
                       id="emergency-calls"
+                      type="number"
                     />
                     
                     <InputField
+                      key="emergency-multiplier"
                       label="Emergency call cost multiplier"
                       value={inputs.emergencyMultiplier}
-                      onChange={(value) => updateInput('emergencyMultiplier', value)}
+                      onChange={(e) => updateInput('emergencyMultiplier', e.target.value)}
                       min={1}
                       tooltip="How much more expensive emergency calls are vs. regular service (typically 2-3x due to route disruption)"
                       id="emergency-multiplier"
+                      type="number"
                     />
                   </div>
                 )}
