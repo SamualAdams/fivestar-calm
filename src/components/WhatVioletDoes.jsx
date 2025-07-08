@@ -1,0 +1,61 @@
+import React from 'react'
+import { Zap, Monitor, TrendingUp, Wrench } from 'lucide-react'
+import Section from './layout/Section'
+import Container from './layout/Container'
+import Grid from './layout/Grid'
+import FeatureCard from './content/FeatureCard'
+
+const WhatVioletDoes = () => {
+  const benefits = [
+    {
+      icon: Zap,
+      title: "UV Disinfection Technology",
+      description: "Eliminates most bacteria, viruses, and pathogens automatically after each use. No chemicals needed—reduce manual cleaning time and improve service efficiency."
+    },
+    {
+      icon: Monitor,
+      title: "Smart Monitoring System", 
+      description: "Real-time fill level and usage tracking with automated alerts that prevent overflows and optimize service routes—reducing fuel costs and emergency calls."
+    },
+    {
+      icon: TrendingUp,
+      title: "Operational Efficiency",
+      description: "Route optimization and predictive maintenance reduce operating costs while maintaining competitive pricing in your market."
+    },
+    {
+      icon: Wrench,
+      title: "Easy Fleet Integration",
+      description: "Upgrade existing fleet with 15-minute installation and universal compatibility—lower investment than full fleet replacement with faster payback."
+    }
+  ]
+
+  return (
+    <Section background="gray" className="py-16 md:py-24">
+      <Container>
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-primary">
+            What Violet Mini Does
+          </h2>
+          <p className="text-lg text-gray-secondary max-w-4xl mx-auto leading-relaxed">
+            Why replace your entire fleet when you can upgrade it? Violet Mini transforms standard portable toilets into operationally optimized units that reduce service costs while maintaining competitive pricing.
+          </p>
+        </div>
+        
+        {/* Feature Cards */}
+        <Grid cols={4}>
+          {benefits.map((benefit, index) => (
+            <FeatureCard
+              key={index}
+              icon={benefit.icon}
+              title={benefit.title}
+              description={benefit.description}
+            />
+          ))}
+        </Grid>
+      </Container>
+    </Section>
+  )
+}
+
+export default WhatVioletDoes
