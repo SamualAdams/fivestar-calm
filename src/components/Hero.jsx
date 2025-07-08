@@ -17,7 +17,7 @@ const Hero = () => {
             Reduce Operating Costs While Improving Service Quality
           </h1>
           <h2 className="mt-4 text-lg text-gray-600">
-            UV disinfection and smart monitoring to your existing fleet
+            UV disinfection and smart monitoring for your existing fleet.
           </h2>
           
           <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
